@@ -109,6 +109,10 @@ static void xen_change_state_handler(void *opaque, int running,
         /* record state running */
         xenstore_record_dm_state(xenstore, "running");
     }
+
+    if (state == RUN_STATE_INMIGRATE){
+        xenstore_record_dm_state(xenstore, "inmigrate");
+    }
 }
 
 static int xen_init(MachineState *ms)

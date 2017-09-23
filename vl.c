@@ -4615,6 +4615,7 @@ int main(int argc, char **argv, char **envp)
     if (incoming) {
         Error *local_err = NULL;
         qemu_start_incoming_migration(incoming, &local_err);
+        vm_state_notify(0, RUN_STATE_INMIGRATE);
         if (local_err) {
             error_report("-incoming %s: %s", incoming,
                          error_get_pretty(local_err));
